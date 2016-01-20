@@ -12,4 +12,9 @@
     tools:context="com.studios.lucian.excelfile.ReadSelectedFile"
     tools:showIn="@layout/activity_read_selected_file">
 
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
 </RelativeLayout>
