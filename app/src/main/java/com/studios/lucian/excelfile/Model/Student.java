@@ -1,11 +1,9 @@
 package com.studios.lucian.excelfile.Model;
 
-import java.io.Serializable;
-
 /**
  * Created with love by Lucian and @Pi on 20.01.2016.
  */
-public class Student implements Serializable {
+public class Student {
     private String name;
     private String faculty;
     private String average;
@@ -13,7 +11,6 @@ public class Student implements Serializable {
     private String crt;
 
     public Student() {
-
     }
 
     public Student(String name, String faculty, String average, String yearOfStudy, String crt) {

@@ -12,4 +12,77 @@
     tools:context="com.studios.lucian.excelfile.SelectedStudent"
     tools:showIn="@layout/activity_selected_student">
 
+    <TextView
+        android:id="@+id/textViewCRT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="Number: "
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textDisplayCRT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textViewCRT"
+        android:layout_toEndOf="@+id/textViewCRT"
+        android:textSize="20sp" />
+
+
+    <TextView
+        android:id="@+id/textViewGrade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="24dp"
+        android:text="Grade: "
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textDisplayGrade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textViewGrade"
+        android:layout_toEndOf="@+id/textViewGrade"
+        android:textSize="20sp" />
+
+
+    <TextView
+        android:id="@+id/textViewYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="48dp"
+        android:text="Year of Study: "
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textDisplayYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textViewYear"
+        android:layout_toEndOf="@+id/textViewYear"
+        android:textSize="20sp" />
+
+
+    <TextView
+        android:id="@+id/textViewFaculty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="72dp"
+        android:text="Faculty: "
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textDisplayFaculty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textViewFaculty"
+        android:layout_toEndOf="@+id/textViewFaculty"
+        android:textSize="20sp" />
 </RelativeLayout>

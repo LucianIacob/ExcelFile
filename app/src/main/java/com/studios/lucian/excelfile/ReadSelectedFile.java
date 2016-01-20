@@ -57,7 +57,11 @@ public class ReadSelectedFile extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(view.getContext(), SelectedStudent.class);
-                intent.putExtra("student", studentList.get(position));
+                intent.putExtra("crt", studentList.get(position).getCrt());
+                intent.putExtra("name", studentList.get(position).getName());
+                intent.putExtra("faculty", studentList.get(position).getFaculty());
+                intent.putExtra("grade", studentList.get(position).getAverage());
+                intent.putExtra("year", studentList.get(position).getYearOfStudy());
                 startActivity(intent);
             }
         });

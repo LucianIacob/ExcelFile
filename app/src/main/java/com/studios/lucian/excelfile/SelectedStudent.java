@@ -1,11 +1,10 @@
 package com.studios.lucian.excelfile;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.widget.TextView;
 
 public class SelectedStudent extends AppCompatActivity {
 
@@ -15,16 +14,24 @@ public class SelectedStudent extends AppCompatActivity {
         setContentView(R.layout.activity_selected_student);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
 
+        Intent intent = getIntent();
+        String crt = intent.getStringExtra("crt");
+        String year = intent.getStringExtra("year");
+        String name = intent.getStringExtra("name");
+        String grade = intent.getStringExtra("grade");
+        String faculty = intent.getStringExtra("faculty");
+
+        setTitle(name);
+
+        TextView textVewCrt = (TextView) findViewById(R.id.textDisplayCRT);
+        TextView textViewGrade = (TextView) findViewById(R.id.textDisplayGrade);
+        TextView textViewYear = (TextView) findViewById(R.id.textDisplayYear);
+        TextView textViewFaculty = (TextView) findViewById(R.id.textDisplayFaculty);
+        textVewCrt.setText(crt);
+        textViewGrade.setText(grade);
+        textViewYear.setText(year);
+        textViewFaculty.setText(faculty);
+    }
 }
