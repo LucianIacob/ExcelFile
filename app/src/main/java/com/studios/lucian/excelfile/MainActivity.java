@@ -2,6 +2,7 @@ package com.studios.lucian.excelfile;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
@@ -72,9 +73,9 @@ public class MainActivity extends ListActivity {
                 new AlertDialog.Builder(this).setTitle("[" + file.getName() + "] folder can't be read!").setPositiveButton("OK", null).show();
             }
         } else {
-            //Intent intent = new Intent(this, ReadSelectedFile.class);
-            //intent.putExtra(getString(R.string.file_absolute_path), file.getAbsolutePath());
-            //startActivity(intent);
+            Intent intent = new Intent(this, ReadSelectedFile.class);
+            intent.putExtra(getString(R.string.file_absolute_path), file.getAbsolutePath());
+            startActivity(intent);
             //new AlertDialog.Builder(this).setTitle(file.getName()).setPositiveButton("OK", null).show();
         }
     }
