@@ -26,6 +26,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.studios.lucian.excelfile.MainActivity" />
         </activity>
+        <activity
+            android:name=".SelectedStudent"
+            android:label="@string/title_activity_selected_student"
+            android:parentActivityName=".ReadSelectedFile"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.studios.lucian.excelfile.ReadSelectedFile" />
+        </activity>
     </application>
 
 </manifest>

@@ -5,22 +5,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.studios.lucian.excelfile.Model.Student;
+import com.studios.lucian.excelfile.Utils.Constants;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
 
 public class ReadSelectedFile extends AppCompatActivity {
 
-    private ArrayList<String> list;
+    private ArrayList<Student> studentList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +33,6 @@ public class ReadSelectedFile extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
@@ -38,29 +41,48 @@ public class ReadSelectedFile extends AppCompatActivity {
         displayStudents();
     }
 
+
     private void displayStudents() {
-        ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<>(this, R.layout.row, list);
+        ArrayList<String> listToDisplay = new ArrayList<>();
+        for (Student student : studentList) {
+            String studentToDisplay = Constants.NAME + student.getName() + Constants.SECTION +
+                    student.getFaculty() + Constants.AVERAGE + student.getAverage();
+            listToDisplay.add(studentToDisplay);
+        }
+        ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<>(this, R.layout.displayed_student, listToDisplay);
         ListView listView = (ListView) findViewById(android.R.id.list);
         listView.setAdapter(stringArrayAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(view.getContext(), SelectedStudent.class);
+                intent.putExtra("student", studentList.get(position));
+                startActivity(intent);
+            }
+        });
     }
 
     private void parseExcelFile(String file_path) {
         try {
-            list = new ArrayList<>();
+            studentList = new ArrayList<>();
             File file = new File(file_path);
             FileInputStream fileInputStream = new FileInputStream(file);
 
             Workbook workbook = Workbook.getWorkbook(fileInputStream);
             Sheet sheet = workbook.getSheet(0);
 
-            int row = sheet.getRows();
-            String listItem;
-            for (int i = 8; i < 127; i++) {
-                listItem = "";
-                Cell cell = sheet.getCell(1, i);
-                listItem += cell.getContents();
+            int numRows = sheet.getRows();
+            Student student;
 
-                list.add(listItem);
+            for (int i = 8; i < numRows - 12; i++) {
+                student = new Student();
+                student.setCrt(sheet.getCell(0, i).getContents());
+                student.setName(sheet.getCell(1, i).getContents());
+                student.setYearOfStudy(sheet.getCell(2, i).getContents());
+                student.setFaculty(sheet.getCell(3, i).getContents());
+                student.setAverage(sheet.getCell(5, i).getContents());
+                studentList.add(student);
             }
         } catch (BiffException | IOException e) {
             new AlertDialog.Builder(this).setTitle(e.getMessage()).setPositiveButton("OK", null).show();
