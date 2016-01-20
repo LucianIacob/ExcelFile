@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Excel File</string>
+    <string name="app_name">Students</string>
+    <string name="title_activity_read_selected_file">File Content</string>
+    <string name="file_absolute_path">File Path</string>
+    <string name="title_activity_selected_student">Student</string>
+    <string name="first_activity_bar">Select File</string>
 </resources>
