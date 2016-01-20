@@ -76,7 +76,6 @@ public class MainActivity extends ListActivity {
             Intent intent = new Intent(this, ReadSelectedFile.class);
             intent.putExtra(getString(R.string.file_absolute_path), file.getAbsolutePath());
             startActivity(intent);
-            //new AlertDialog.Builder(this).setTitle(file.getName()).setPositiveButton("OK", null).show();
         }
     }
 }
